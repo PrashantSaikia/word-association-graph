@@ -3,7 +3,7 @@ A simple function to plot a word association graph between the nouns in a given 
 
 How to use:
 ```
-# Download the file
+# Download the file. Then:
 from word_assoc_graph import plot_word_associations as pwa
 
 # take the first paragraph of Wikipedia's description of Wikipedia as a sample text
