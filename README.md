@@ -1,5 +1,5 @@
 # word-association-graph
-Plots a word association graph between the nouns in a given text with the adjectives and verbs in the text.
+A simple function to plot a word association graph between the nouns in a given text with the adjectives and verbs in the text.
 
 How to use:
 ```
