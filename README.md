@@ -12,3 +12,4 @@ text = "Wikipedia was launched on January 15, 2001, by Jimmy Wales and Larry San
 text = re.sub("[\[].*?[\]]", "", text) # Do more processing (like lemmatization, stemming, etc if you want)
 pwa(text)
 ```
+https://user-images.githubusercontent.com/39755678/50826185-e7a59280-1375-11e9-919c-b7adab02672a.PNG
