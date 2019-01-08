@@ -41,5 +41,6 @@ def plot_word_associations(text):
         for word in df['Verbs & Adjectives'][i]:
             G.add_edges_from([(df['Nouns'][i], word)])
 
-    pos = nx.kamada_kawai_layout(G)
-    nx.draw(G, with_labels=True, font_size=20) #font_weight='bold', 
+    pos = nx.spring_layout(G, k=0.5)
+    nx.draw(G, pos, with_labels=True, font_size=20)
+    plt.show()
