@@ -1,6 +1,12 @@
 # word-association-graph
 A simple function to plot a word association graph between the nouns in a given text with the adjectives and verbs in the text.
 
+-The input text is a string of sentences ending in periods. If the text does not have any period, it does not produce a plot.
+-The output is a plot of the nouns in the text connected to the adjectives and verbs as they appear in the text.
+-k is the 'spread factor' - lower the k, lesser the intra-cluster spread,and vice versa.
+-The nodes are sized according to their degree.
+-Nodes are colored red if they are nouns, yellow if they are adjectives, and green if they are verbs.
+
 How to use:
 ```
 # Download the file. Then:
