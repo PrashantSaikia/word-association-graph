@@ -43,6 +43,7 @@ def word_association_graph(text, k=0.4, font_size=24):
 
     fig = plt.figure(figsize=(30,20))
     G = nx.Graph()
+    color_map=[]
     for i in range(len(df)):
         G.add_node(df['Nouns'][i])
         color_map.append('blue')
