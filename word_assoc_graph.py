@@ -3,8 +3,16 @@ import pandas as pd
 import numpy as np
 import networkx as nx
 import matplotlib.pyplot as plt
+from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-def plot_word_associations(text):
+def word_association_graph(text, k=0.4, font_size=24):
+    '''
+    -The input text is a string of sentences ending in periods. If the text does not have any period, it does not produce a plot.
+    -The output is a plot of the nouns in the text connected to the adjectives and verbs as they appear in the text.
+    -k is the 'spread factor' - lower the k, lesser the intra-cluster spread,and vice versa.
+    -The nodes are sized according to their degree.
+    -Nodes are colored red if they are nouns, yellow if they are adjectives, and green if they are verbs.
+    '''
     nouns_in_text = []
     is_noun = lambda pos: pos[:2] == 'NN'
 
@@ -14,7 +22,7 @@ def plot_word_associations(text):
         nouns_in_text.append(' '.join([word for word in nouns if not (word=='' or len(word)==1)]))
 
     nouns_list = []
-
+    
     for sent in nouns_in_text:
         temp = sent.split(' ')
         for word in temp:
@@ -35,12 +43,29 @@ def plot_word_associations(text):
 
     fig = plt.figure(figsize=(30,20))
     G = nx.Graph()
-
     for i in range(len(df)):
         G.add_node(df['Nouns'][i])
+        color_map.append('blue')
         for word in df['Verbs & Adjectives'][i]:
             G.add_edges_from([(df['Nouns'][i], word)])
-
-    pos = nx.spring_layout(G, k=0.5)
-    nx.draw(G, pos, with_labels=True, font_size=20)
-    plt.show()
+            
+    pos = nx.spring_layout(G, k)
+    
+    d = nx.degree(G)
+    node_sizes = []
+    for i in d:
+        _, value = i
+        node_sizes.append(value)
+    
+    color_list = []
+    for i in G.nodes:
+        value = nltk.pos_tag([i])[0][1]
+        if (value=='NN' or value=='NNP' or value=='NNS'):
+            color_list.append('red')
+        elif value=='JJ':
+            color_list.append('yellow')
+        else:
+            color_list.append('green')
+        
+    nx.draw(G, pos, node_size=[(v+1)*200 for v in node_sizes], with_labels=True, node_color=color_list, font_size=font_size)
+    plt.show() 
