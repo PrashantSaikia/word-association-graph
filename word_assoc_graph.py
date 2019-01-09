@@ -11,7 +11,7 @@ def word_association_graph(text, k=0.4, font_size=24):
     -The output is a plot of the nouns in the text connected to the adjectives and verbs as they appear in the text.
     -k is the 'spread factor' - lower the k, lesser the intra-cluster spread,and vice versa.
     -The nodes are sized according to their degree.
-    -Nodes are colored red if they are nouns, yellow if they are adjectives, and green if they are verbs.
+    -Nodes are colored red if they are nouns, yellow if they are adjectives, and blue if they are verbs.
     '''
     nouns_in_text = []
     is_noun = lambda pos: pos[:2] == 'NN'
@@ -65,7 +65,7 @@ def word_association_graph(text, k=0.4, font_size=24):
         elif value=='JJ':
             color_list.append('yellow')
         else:
-            color_list.append('green')
+            color_list.append('blue')
         
     nx.draw(G, pos, node_size=[(v+1)*200 for v in node_sizes], with_labels=True, node_color=color_list, font_size=font_size)
     plt.show() 
