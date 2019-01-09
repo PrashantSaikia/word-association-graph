@@ -5,7 +5,7 @@ A simple function to plot a word association graph between the nouns in a given 
 * The output is a plot of the nouns in the text connected to the adjectives and verbs as they appear in the text.
 * k is the 'spread factor' - lower the k, lesser the intra-cluster spread,and vice versa.
 * The nodes are sized according to their degree.
-* Nodes are colored red if they are nouns, yellow if they are adjectives, and green if they are verbs.
+* Nodes are colored red if they are nouns, yellow if they are adjectives, and blue if they are verbs.
 
 How to use:
 ```
@@ -18,4 +18,4 @@ text = "Wikipedia was launched on January 15, 2001, by Jimmy Wales and Larry San
 text = re.sub("[\[].*?[\]]", "", text) # Do more processing (like lemmatization, stemming, etc if you want)
 pwa(text, k=0.5, font_size=26)
 ```
-![capture](https://user-images.githubusercontent.com/39755678/50878135-25ef9000-1410-11e9-9992-56434eecd041.PNG)
+![capture](https://user-images.githubusercontent.com/39755678/50878308-14f34e80-1411-11e9-87cd-eecbc0bc5137.PNG)
