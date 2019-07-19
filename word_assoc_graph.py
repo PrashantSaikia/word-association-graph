@@ -5,7 +5,7 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from nltk.sentiment.vader import SentimentIntensityAnalyzer
 
-def word_association_graph(text, k=0.4, font_size=24):
+def word_association_graph(text, k=0.4, font_size=32):
     '''
     -The input text is a string of sentences ending in periods. If the text does not have any period, it does not produce a plot.
     -The output is a plot of the nouns in the text connected to the adjectives and verbs as they appear in the text.
@@ -68,5 +68,6 @@ def word_association_graph(text, k=0.4, font_size=24):
         else:
             color_list.append('blue')
         
+    plt.figure(figsize=(40,40))
     nx.draw(G, pos, node_size=[(v+1)*200 for v in node_sizes], with_labels=True, node_color=color_list, font_size=font_size)
     plt.show() 
